@@ -10,6 +10,8 @@ package dev.rayen.TaskManagmentSystem.mapper;
 import dev.rayen.TaskManagmentSystem.dto.userDTO;
 import dev.rayen.TaskManagmentSystem.entity.Role;
 import dev.rayen.TaskManagmentSystem.entity.user;
+import dev.rayen.TaskManagmentSystem.exception.CustomException;
+import dev.rayen.TaskManagmentSystem.exception.ErrorCode;
 
 public class UserMapper {
 
@@ -53,8 +55,7 @@ public class UserMapper {
         try {
             return Role.valueOf(roleString.toUpperCase()); // Convert the string to enum (case-insensitive)
         } catch (IllegalArgumentException e) {
-            // Return null or handle the invalid role case
-            return null;
+            throw  new CustomException(ErrorCode.INVALID_ROLE, "invalid role" + roleString);
         }
     }
 }

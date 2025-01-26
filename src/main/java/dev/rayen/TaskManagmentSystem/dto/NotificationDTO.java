@@ -17,11 +17,15 @@ public record NotificationDTO(
         @NotBlank(message = "message is required")
         String message,
 
-        @NotBlank(message = "sender  is required")
-        LocalDateTime senAt,
+        @NotNull(message = "sender  is required")
+        LocalDateTime sentAt,
 
         @NotNull(message = "is required")
-        boolean isRead
-) {}
+        boolean isRead,
 
-// TODO: for the next time
+         @NotNull(message = "userId is required")
+         Long userId  // Added userId field
+) {
+
+}
+

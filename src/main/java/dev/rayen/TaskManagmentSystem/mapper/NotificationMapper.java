@@ -21,8 +21,9 @@ public class NotificationMapper {
 
         return new NotificationDTO(
                 notification.getMessage(),
-                notification.getSentAt(),
-                notification.isRead()
+                notification.getSentAt(),  // Corrected field name
+                notification.isRead(),
+                notification.getUser().getId()  // Include userId in the DTO
         );
     }
 
@@ -34,7 +35,7 @@ public class NotificationMapper {
 
         Notification notification = new Notification();
         notification.setMessage(notificationDTO.message());
-        notification.setSentAt(notificationDTO.senAt());
+        notification.setSentAt(notificationDTO.sentAt());
         notification.setRead(notificationDTO.isRead());
         notification.setUser(user); // Assuming you have the User object from the ID or context
 
